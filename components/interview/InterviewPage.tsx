@@ -44,11 +44,19 @@ const App: () => JSX.Element = () => {
         setCaption("Interview resumed. Speak now...");
         //setInterviewState(true);
         setPausedState(false);
+        connectToDeepgram({
+            model: "nova-2-conversationalai",
+            interim_results: true,
+            smart_format: true,
+            filler_words: true,
+            utterance_end_ms: 3000,
+            endpointing: 300
+        });
     }
 
     const endInterview = () => {
         console.log('interview ended');
-        setInterviewState(false);
+        //setInterviewState(false);
         setPausedState(false);
         setCaption("Interview ended...");
         disconnectFromDeepgram();
@@ -57,10 +65,10 @@ const App: () => JSX.Element = () => {
 
     const pauseInterview = () => {
         console.log('interview paused');
-        //setInterviewState(false);
+        // setInterviewState(false);
         setPausedState(true);
         setCaption("Interview paused. Resume when ready...");
-        //disconnectFromDeepgram();
+        disconnectFromDeepgram();
         setResponseAudioUrl('');
     }
 
