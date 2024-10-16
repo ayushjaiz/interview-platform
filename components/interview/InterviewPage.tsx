@@ -177,14 +177,16 @@ const App: () => JSX.Element = () => {
                 </CardHeader>
                 <CardContent className="p-6 space-y-6">
                     {!interviewState ? (
-                        <Button
-                            onClick={startInterview}
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out"
-                        >
-                            Start Interview
-                        </Button>
+                        <div className="flex">
+                            <Button
+                                onClick={startInterview}
+                                className="mx-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out"
+                            >
+                                Start Interview
+                            </Button>
+                        </div>
                     ) : (
-                        <div className="flex gap-4">
+                        <div className="flex">
 
                             <Button
                                 onClick={endInterview}
