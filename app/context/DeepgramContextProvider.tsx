@@ -32,8 +32,6 @@ interface DeepgramContextProviderProps {
   children: ReactNode;
 }
 
-const getApiKey = () => process.env.DEEPGRAM_API_KEY;
-
 const DeepgramContextProvider: FunctionComponent<
   DeepgramContextProviderProps
 > = ({ children }) => {
@@ -50,7 +48,7 @@ const DeepgramContextProvider: FunctionComponent<
    * @returns A Promise that resolves when the connection is established.
    */
   const connectToDeepgram = async (options: LiveSchema, endpoint?: string) => {
-    const deepgram = createClient(process.env.DEEPGRAM_API_KEY);
+    const deepgram = createClient('3cefd113a02dfc49d06fa1ec62b0915a831b0478');
 
     const conn = deepgram.listen.live(options, endpoint);
 
