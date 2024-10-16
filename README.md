@@ -1,9 +1,9 @@
 
-# Project Name
+# ML Interview Platform
 
 ## Overview
 
-This project is a real-time voice communication application built with Next.js. It integrates **Deepgram** for speech-to-text (STT) conversion and **Gemini LLM** for natural language processing (NLP). The application facilitates interactive conversations by converting user speech to text, generating responses via Gemini LLM, and converting the text back into speech for a seamless, voice-driven interface.
+This project is an AI-powered interview platform built with Next.js. It integrates Deepgram for speech-to-text (STT) conversion and Gemini LLM for natural language processing (NLP). The platform facilitates interactive interviews by converting the user's spoken answers into text, generating responses or questions via Gemini LLM, and converting the generated text back into speech for a seamless, voice-driven interview experience.
 
 Project Video: https://youtu.be/NM5Y3exMh4U
 
