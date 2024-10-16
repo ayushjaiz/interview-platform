@@ -26,7 +26,7 @@ const App: () => JSX.Element = () => {
     const [responseAudioUrl, setResponseAudioUrl] = useState<string | undefined>();
 
     const [interviewState, setInterviewState] = useState<boolean>(false);
-    const [pausedState, setPausedState] = useState<boolean>(false);
+    // const [pausedState, setPausedState] = useState<boolean>(false);
 
 
     const [caption, setCaption] = useState<string | undefined>(
@@ -39,36 +39,11 @@ const App: () => JSX.Element = () => {
         setInterviewState(true);
     }
 
-    const resumeInterview = () => {
-        console.log('interview resumed');
-        setCaption("Interview resumed. Speak now...");
-        //setInterviewState(true);
-        setPausedState(false);
-        connectToDeepgram({
-            model: "nova-2-conversationalai",
-            interim_results: true,
-            smart_format: true,
-            filler_words: true,
-            utterance_end_ms: 3000,
-            endpointing: 300
-        });
-    }
-
     const endInterview = () => {
         console.log('interview ended');
-        //setInterviewState(false);
-        setPausedState(false);
+        setInterviewState(false);
         setCaption("Interview ended...");
-        disconnectFromDeepgram();
-        setResponseAudioUrl('');
-    }
-
-    const pauseInterview = () => {
-        console.log('interview paused');
-        // setInterviewState(false);
-        setPausedState(true);
-        setCaption("Interview paused. Resume when ready...");
-        disconnectFromDeepgram();
+        // disconnectFromDeepgram();
         setResponseAudioUrl('');
     }
 
@@ -80,8 +55,7 @@ const App: () => JSX.Element = () => {
         }
         else {
             stopMicrophone();
-            stopMicrophone();
-            // disconnectFromDeepgram();
+            disconnectFromDeepgram();
         }
     }, [interviewState]);
 
@@ -211,25 +185,10 @@ const App: () => JSX.Element = () => {
                         </Button>
                     ) : (
                         <div className="flex gap-4">
-                            {!pausedState ? (
-                                <Button
-                                    onClick={pauseInterview}
-                                    className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out"
-                                >
-                                    Pause Interview
-                                </Button>
-                            ) : (
-                                <Button
-                                    onClick={resumeInterview}
-                                    className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out"
-                                >
-                                    Resume Interview
-                                </Button>
-                            )}
 
                             <Button
                                 onClick={endInterview}
-                                className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out"
+                                className="mx-auto bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out"
                             >
                                 End Interview
                             </Button>
