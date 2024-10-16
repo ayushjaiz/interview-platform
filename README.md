@@ -27,8 +27,9 @@ Project Video: https://youtu.be/NM5Y3exMh4U
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-project.git
-   cd your-project
+   git clone https://github.com/ayushjaiz/interview-platform.git
+   
+   cd interview-platform
    ```
 
 2. Install dependencies:
