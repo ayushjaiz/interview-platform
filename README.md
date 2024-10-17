@@ -62,3 +62,5 @@ Project Video: https://youtu.be/NM5Y3exMh4U
 3. The application will send your voice to Deepgram for transcription.
 4. The transcribed text will be processed by the Gemini LLM.
 5. The generated response will be converted back to voice and played for you.
+
+note: Keep your fans closed while running the project
