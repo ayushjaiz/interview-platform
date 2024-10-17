@@ -32,6 +32,17 @@ interface DeepgramContextProviderProps {
   children: ReactNode;
 }
 
+const getApiKey = async (): Promise<string> => {
+  const response = await fetch("/api/authenticate", { cache: "no-store" });
+  const result = await response.json();
+
+  console.log("API Key: ", result.key);
+
+  return result.key;
+
+  
+};
+
 const DeepgramContextProvider: FunctionComponent<
   DeepgramContextProviderProps
 > = ({ children }) => {
@@ -48,7 +59,10 @@ const DeepgramContextProvider: FunctionComponent<
    * @returns A Promise that resolves when the connection is established.
    */
   const connectToDeepgram = async (options: LiveSchema, endpoint?: string) => {
-    const deepgram = createClient('3cefd113a02dfc49d06fa1ec62b0915a831b0478');
+    const key = process.env.NEXT_PUBLIC_DEEPGRAM_API_KEY;
+
+    //console.log('key in frontend', key)
+    const deepgram = createClient(key);
 
     const conn = deepgram.listen.live(options, endpoint);
 

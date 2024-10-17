@@ -36,5 +36,3 @@ yarn-error.log*
 next-env.d.ts
 
 app/status
-components/interview/CaptionDisplay.tsx
-components/interview/interviewControls.tsx
